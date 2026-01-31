@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #e8d9ff);
+    color: #4a2c3a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .screen {
+    display: none;
+    text-align: center;
+    padding: 24px;
+    max-width: 360px;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .screen.active {
+    display: block;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  button {
+    margin-top: 24px;
+    padding: 14px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background: #ff6fa5;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 111, 165, 0.4);
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  .choice-btn {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    background: #ffffff;
+    color: #ff6fa5;
+  }
+
+  .gift {
+    font-size: 60px;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div class="screen active">
+  <h1>🎂 Happy Birthday My Love ❤️</h1>
+  <p>
+    Today is all about you ✨<br>
+    I made this just to remind you<br>
+    how incredibly special you are to me 💕
+  </p>
+  <button onclick="next()">Start the Surprise 🎁</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="screen">
+  <h1>💌 For You</h1>
+  <p>
+    My love,<br><br>
+    Every day with you feels like a gift ✨<br>
+    You make my world brighter,<br>
+    my heart calmer,<br>
+    and my life so much happier 💕<br><br>
+    You are deeply loved.<br>
+    Today and always ❤️
+  </p>
+  <button onclick="next()">Next Surprise 💖</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="screen">
+  <h1>📸 Memory Lane</h1>
+  <p>
+    Every memory with you<br>
+    is my favorite one 💫<br><br>
+    Thank you for all the laughs,<br>
+    love, and moments we share 💕
+  </p>
+  <button onclick="next()">Let’s Play 🎮</button>
+</div>
+
+<!-- SCREEN 4 -->
+<div class="screen">
+  <h1>🎮 Quick Question</h1>
+  <p>What do I love most about you?</p>
+
+  <button class="choice-btn" onclick="next()">Your smile 😊</button>
+  <button class="choice-btn" onclick="next()">Your heart 💖</button>
+  <button class="choice-btn" onclick="next()">Everything 🥰</button>
+</div>
+
+<!-- SCREEN 5 -->
+<div class="screen">
+  <h1>🎁 A Gift for You</h1>
+  <div class="gift" onclick="openGift()">🎁</div>
+  <p id="giftText"></p>
+  <button id="finalBtn" style="display:none;" onclick="next()">Final Message 🌙</button>
+</div>
+
+<!-- SCREEN 6 -->
+<div class="screen">
+  <h1>🌙 Forever</h1>
+  <p>
+    Thank you for being you 💕<br><br>
+    No matter where life takes us,<br>
+    my heart will always choose yours ❤️<br><br>
+    Happy Birthday.<br>
+    I love you forever ✨
+  </p>
+</div>
+
+<script>
+  let current = 0;
+  const screens = document.querySelectorAll(".screen");
+
+  function next() {
+    screens[current].classList.remove("active");
+    current++;
+    screens[current].classList.add("active");
+  }
+
+  function openGift() {
+    document.getElementById("giftText").innerHTML =
+      "My promise to you 💖<br><br>" +
+      "More laughter.<br>" +
+      "More love.<br>" +
+      "More memories.<br><br>" +
+      "I choose you. Always ❤️";
+    document.getElementById("finalBtn").style.display = "inline-block";
+  }
+</script>
+
+</body>
+</html>
