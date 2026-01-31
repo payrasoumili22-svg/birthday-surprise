@@ -6,10 +6,9 @@
 <title>Happy Birthday My Love ❤️</title>
 
 <style>
+  
   body {
-    <audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5cdbb4dcb1.mp3" type="audio/mpeg">
-</audio>
+    
     margin: 0;
     font-family: "Poppins", sans-serif;
     background: linear-gradient(135deg, #ffd6e8, #e8d9ff);
@@ -88,7 +87,7 @@
     I made this just to remind you<br>
     how incredibly special you are to me 💕
   </p>
-  <button onclick="next()">Start the Surprise 🎁</button>
+  <button onclick="playMusic();next()">Start the Surprise 🎁</button>
 </div>
 
 <!-- SCREEN 2 -->
@@ -151,6 +150,9 @@
 <script>
   let current = 0;
   const screens = document.querySelectorAll(".screen");
+  function playMusic() {
+  document.getElementById("bgMusic").play();
+  }
 
   function next() {
     screens[current].classList.remove("active");
@@ -168,6 +170,9 @@
     document.getElementById("finalBtn").style.display = "inline-block";
   }
 </script>
+  <audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c1b8f0c55.mp3" type="audio/mpeg">
+  </audio>
 
 </body>
 </html>
