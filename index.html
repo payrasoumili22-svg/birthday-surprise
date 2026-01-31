@@ -1,178 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Happy Birthday My Love ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
 
 <style>
-  
-  body {
-    
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #ffd6e8, #e8d9ff);
-    color: #4a2c3a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ffd6e8, #e8d9ff);
+  font-family: "Poppins", sans-serif;
+  color: #4a2c3a;
+  overflow: hidden;
+}
 
-  .screen {
-    display: none;
-    text-align: center;
-    padding: 24px;
-    max-width: 360px;
-    animation: fadeIn 0.6s ease;
-  }
+.screen {
+  display: none;
+  height: 100vh;
+  padding: 24px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
 
-  .screen.active {
-    display: block;
-  }
+.screen.active {
+  display: flex;
+}
 
-  h1 {
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
+button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #ff6fa5;
+  color: white;
+  font-size: 16px;
+  margin-top: 24px;
+  cursor: pointer;
+}
 
-  p {
-    font-size: 16px;
-    line-height: 1.6;
-  }
+.fade {
+  animation: fade 0.8s ease;
+}
 
-  button {
-    margin-top: 24px;
-    padding: 14px 22px;
-    font-size: 16px;
-    border: none;
-    border-radius: 30px;
-    background: #ff6fa5;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 111, 165, 0.4);
-  }
+@keyframes fade {
+  from {opacity:0; transform:translateY(10px);}
+  to {opacity:1; transform:translateY(0);}
+}
 
-  button:hover {
-    transform: scale(1.05);
-  }
+/* Cake */
+#cakeSVG {
+  width: 260px;
+  margin-top: 20px;
+}
 
-  .choice-btn {
-    display: block;
-    width: 100%;
-    margin-top: 12px;
-    background: #ffffff;
-    color: #ff6fa5;
-  }
+.flame {
+  fill: orange;
+  animation: flicker 0.8s infinite alternate;
+}
 
-  .gift {
-    font-size: 60px;
-    cursor: pointer;
-  }
+@keyframes flicker {
+  from {transform: scale(1);}
+  to {transform: scale(0.6);}
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* Knife */
+#knife {
+  font-size: 44px;
+  margin-top: 20px;
+  user-select: none;
+}
+
+/* Gift */
+#gift {
+  font-size: 90px;
+  cursor: pointer;
+}
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
+<audio id="birthdaySong">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c1b8f0c55.mp3" type="audio/mpeg">
+</audio>
+
 <!-- SCREEN 1 -->
-<div class="screen active">
-  <h1>🎂 Happy Birthday My Love ❤️</h1>
-  <p>
-    Today is all about you ✨<br>
-    I made this just to remind you<br>
-    how incredibly special you are to me 💕
-  </p>
-  <button onclick="playMusic();next()">Start the Surprise 🎁</button>
+<div class="screen active fade">
+  <h1>Hey my love ❤️</h1>
+  <p>I made something special just for you…</p>
+  <button onclick="next()">Open 💌</button>
 </div>
 
 <!-- SCREEN 2 -->
-<div class="screen">
-  <h1>💌 For You</h1>
+<div class="screen fade">
   <p>
-    My love,<br><br>
-    Every day with you feels like a gift ✨<br>
-    You make my world brighter,<br>
-    my heart calmer,<br>
-    and my life so much happier 💕<br><br>
-    You are deeply loved.<br>
-    Today and always ❤️
+    Today is not just your birthday…<br><br>
+    It’s the day the world got someone incredibly special 💖
   </p>
-  <button onclick="next()">Next Surprise 💖</button>
+  <button onclick="next()">Continue ✨</button>
 </div>
 
-<!-- SCREEN 3 -->
-<div class="screen">
-  <h1>📸 Memory Lane</h1>
+<!-- SCREEN 3: CAKE -->
+<div class="screen fade">
+  <h1>🎂 Make a Wish</h1>
+  <p>Blow the candles 💨</p>
+
+  <svg id="cakeSVG" viewBox="0 0 260 260">
+    <ellipse cx="130" cy="200" rx="90" ry="25" fill="#f3b6c8"/>
+    <rect x="40" y="100" width="180" height="100" rx="40" fill="#ffd6e8"/>
+    <ellipse cx="130" cy="100" rx="90" ry="25" fill="#ffeaf2"/>
+
+    <rect x="110" y="50" width="8" height="45" rx="3" fill="#ff9aa2"/>
+    <circle class="flame" id="flame1" cx="114" cy="45" r="6"/>
+
+    <rect x="145" y="55" width="8" height="40" rx="3" fill="#ffb7b2"/>
+    <circle class="flame" id="flame2" cx="149" cy="50" r="6"/>
+  </svg>
+
+  <button onclick="blow()">Blow Candles 💨</button>
+</div>
+
+<!-- SCREEN 4: CUT -->
+<div class="screen fade">
+  <h1>🔪 Cut the Cake</h1>
+  <p>Swipe the knife</p>
+  <div id="knife" ontouchstart="cut()" onclick="cut()">🔪</div>
+</div>
+
+<!-- SCREEN 5: GIFT -->
+<div class="screen fade">
+  <h1>🎁 A Gift For You</h1>
+  <div id="gift" onclick="openGift()">🎁</div>
+</div>
+
+<!-- SCREEN 6: PHOTO -->
+<div class="screen fade">
+  <img src="https://picsum.photos/300" style="border-radius:20px;width:300px;">
   <p>
-    Every memory with you<br>
-    is my favorite one 💫<br><br>
-    Thank you for all the laughs,<br>
-    love, and moments we share 💕
+    This smile… this heart…<br>
+    I’m so grateful you exist 💕
   </p>
-  <button onclick="next()">Let’s Play 🎮</button>
+  <button onclick="next()">Final 💖</button>
 </div>
 
-<!-- SCREEN 4 -->
-<div class="screen">
-  <h1>🎮 Quick Question</h1>
-  <p>What do I love most about you?</p>
-
-  <button class="choice-btn" onclick="next()">Your smile 😊</button>
-  <button class="choice-btn" onclick="next()">Your heart 💖</button>
-  <button class="choice-btn" onclick="next()">Everything 🥰</button>
-</div>
-
-<!-- SCREEN 5 -->
-<div class="screen">
-  <h1>🎁 A Gift for You</h1>
-  <div class="gift" onclick="openGift()">🎁</div>
-  <p id="giftText"></p>
-  <button id="finalBtn" style="display:none;" onclick="next()">Final Message 🌙</button>
-</div>
-
-<!-- SCREEN 6 -->
-<div class="screen">
-  <h1>🌙 Forever</h1>
+<!-- SCREEN 7: END -->
+<div class="screen fade">
+  <h1>Happy Birthday ❤️</h1>
   <p>
-    Thank you for being you 💕<br><br>
-    No matter where life takes us,<br>
-    my heart will always choose yours ❤️<br><br>
-    Happy Birthday.<br>
-    I love you forever ✨
+    I choose you today.<br>
+    Tomorrow.<br>
+    Always.
   </p>
 </div>
 
 <script>
-  let current = 0;
-  const screens = document.querySelectorAll(".screen");
-  function playMusic() {
-  document.getElementById("bgMusic").play();
-  }
+let current = 0;
+const screens = document.querySelectorAll(".screen");
 
-  function next() {
-    screens[current].classList.remove("active");
-    current++;
-    screens[current].classList.add("active");
-  }
+function next() {
+  screens[current].classList.remove("active");
+  current++;
+  screens[current].classList.add("active");
+}
 
-  function openGift() {
-    document.getElementById("giftText").innerHTML =
-      "My promise to you 🫶🏻<br><br>" +
-      "More laughter.<br>" +
-      "More love.<br>" +
-      "More memories.<br><br>" +
-      "I choose you. Always ❤️";
-    document.getElementById("finalBtn").style.display = "inline-block";
-  }
+function blow() {
+  document.getElementById("flame1").style.display = "none";
+  document.getElementById("flame2").style.display = "none";
+  document.getElementById("birthdaySong").play();
+  setTimeout(next, 800);
+}
+
+function cut() {
+  setTimeout(next, 500);
+}
+
+function openGift() {
+  document.getElementById("gift").innerHTML = "💥";
+  setTimeout(next, 700);
+}
 </script>
-  <audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c1b8f0c55.mp3" type="audio/mpeg">
-  </audio>
 
 </body>
 </html>
